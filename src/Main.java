@@ -11,6 +11,11 @@ public class Main {
         // Print out grid
         grid.printGraph();
 
+        // Find MST using Prims algorithm and prints the result
+        grid.MSTPrims();
+
+
+
         /*// Matrix graph
         MatrixGraph thisGraph = new MatrixGraph(7);
         thisGraph.addEdge(0,1,1);
@@ -81,6 +86,7 @@ public class Main {
         grid.addEdge(Eskildstrup, Maribo, 28);
         grid.addEdge(Eskildstrup, NykoebingF, 13);
         grid.addEdge(Eskildstrup, Vordingborg, 24);
+
         grid.addEdge(Haslev, Korsoer, 60);
         grid.addEdge(Haslev, Koege, 24);
         grid.addEdge(Haslev, Naestved, 25);
@@ -89,6 +95,8 @@ public class Main {
         grid.addEdge(Haslev, Slagelse, 48);
         grid.addEdge(Haslev, Soroe, 34);
         grid.addEdge(Haslev, Vordingborg, 40);
+
+
         grid.addEdge(Holbaek, Jaegerspris, 34);
         grid.addEdge(Holbaek, Kalundborg, 44);
         grid.addEdge(Holbaek, Korsoer, 66);
@@ -96,32 +104,40 @@ public class Main {
         grid.addEdge(Holbaek, Roskilde, 32);
         grid.addEdge(Holbaek,Slagelse, 46);
         grid.addEdge(Holbaek,Soroe, 34);
+
         grid.addEdge(Jaegerspris, Korsoer, 95);
         grid.addEdge(Jaegerspris, Koege, 58);
         grid.addEdge(Jaegerspris, Ringsted, 56);
         grid.addEdge(Jaegerspris, Roskilde, 33);
         grid.addEdge(Jaegerspris, Slagelse, 74);
-        grid.addEdge(Jaegerspris, Soroe, 51);
+        grid.addEdge(Jaegerspris, Soroe, 63);
+
         grid.addEdge(Kalundborg, Ringsted, 62);
         grid.addEdge(Kalundborg, Roskilde, 70);
         grid.addEdge(Kalundborg, Slagelse, 39);
         grid.addEdge(Kalundborg, Soroe, 51);
+
         grid.addEdge(Korsoer,Naestved, 45);
         grid.addEdge(Korsoer, Slagelse, 20);
+
         grid.addEdge(Koege, Naestved, 45);
         grid.addEdge(Koege, Ringsted, 28);
         grid.addEdge(Koege, Roskilde, 25);
         grid.addEdge(Koege, Vordingborg, 60);
+
         grid.addEdge(Maribo, Nakskov, 27);
         grid.addEdge(Maribo, NykoebingF, 26);
+
         grid.addEdge(Naestved, Roskilde, 57);
         grid.addEdge(Naestved, Ringsted, 26);
         grid.addEdge(Naestved, Slagelse, 37);
         grid.addEdge(Naestved, Soroe, 32);
         grid.addEdge(Naestved, Vordingborg, 28);
+
         grid.addEdge(Ringsted, Roskilde, 31);
         grid.addEdge(Ringsted, Soroe, 15);
         grid.addEdge(Ringsted, Vordingborg, 58);
+
         grid.addEdge(Slagelse, Soroe, 14);
 
         return grid;

@@ -9,4 +9,14 @@ public class Edge {
         this.weight = cost;
         this.from.addOutEdge(this);
     }
+
+    public Integer getWeight() {
+        return weight;
+    }
+
+    public Vertex getTo() {
+        return to;
+    }
+
+    //
 }

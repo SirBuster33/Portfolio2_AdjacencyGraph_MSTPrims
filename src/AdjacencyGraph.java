@@ -16,8 +16,8 @@ public class AdjacencyGraph {
             System.out.println("Error: At least one of the vertices given are not in the graph.");
             return;
         }
-        Edge e = new Edge(from, to, weight);
-
+        Edge fromTo = new Edge(from, to, weight);
+        Edge toFrom = new Edge(to, from, weight);
     }
 
     public void printGraph(){

@@ -2,48 +2,22 @@ public class Main {
 
     public static void main(String[] args) {
 
-        // Create a new AdjacencyGraph "grid"
+        // Create a new AdjacencyGraph "grid".
         AdjacencyGraph grid = new AdjacencyGraph();
 
-        // Add the data provided in the Assignment to grid
+        // Add the data to grid.
         addData(grid);
 
-        // Print out grid
+        // Print out grid.
         grid.printGraph();
 
-        // Find MST using Prims algorithm and prints the result
+        // Find MST using Prims algorithm and prints the result.
         grid.MSTPrims();
-
-
-
-        /*// Matrix graph
-        MatrixGraph thisGraph = new MatrixGraph(7);
-        thisGraph.addEdge(0,1,1);
-        thisGraph.addEdge(0, 2, 5);
-        thisGraph.addEdge(0, 4, 3);
-        thisGraph.addEdge(1, 4, 1);
-        thisGraph.addEdge(1, 5, 7);
-        thisGraph.addEdge(2, 4, 1);
-        thisGraph.addEdge(2, 3, 1);
-        thisGraph.addEdge(3, 4, 1);
-        thisGraph.addEdge(3, 6, 1);
-        thisGraph.addEdge(4, 3, 3);
-        thisGraph.addEdge(4, 5, 3);
-        thisGraph.addEdge(4, 6, 4);
-        thisGraph.addEdge(5, 6, 1);
-        thisGraph.printGraph();
-
-
-        // thisGraph.mstPrisms();
-
-        /* int[] pred = thisGraph.shortestPath(0);
-        thisGraph.printPath(pred, 6);
-        thisGraph.printPath(pred, 5);*/
-
 
 
     }
 
+    // Add the data provided in the Assignment to an AdjacencyGraph.
     public static AdjacencyGraph addData(AdjacencyGraph grid){
 
         // Create a vertex for each of the 16 locations.

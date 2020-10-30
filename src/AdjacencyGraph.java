@@ -28,7 +28,7 @@ public class AdjacencyGraph {
     // Prints out all the vertices from the graph with their respective outedges and the edges' weight.
     public void printGraph(){
         for (int i = 0; i < vertices.size(); i++){
-            System.out.println(" From Vertex: " + vertices.get(i).name);
+            System.out.println("From Vertex: " + vertices.get(i).name);
             Vertex currentFrom = vertices.get(i);
             for (int j = 0; j < currentFrom.OutEdges.size(); j++){
                 Edge currentEdge = currentFrom.OutEdges.get(j);
@@ -46,22 +46,27 @@ public class AdjacencyGraph {
             vertices.get(0).setDist(0);
             Q.offer(vertices.get(0));
         }
+
+        // Creates a counter to keep track of how many vertices have been visited.
         int counter = 0;
         int MST = 0;
 
-        // While the priority queue contains elements and we have not visited all vertices yet
+        // While the priority queue contains elements and we have not yet visited all vertices of the AdjacencyGraph...
         while (!Q.isEmpty() && counter < vertices.size()){
             Vertex u = Q.poll();
-            System.out.println("Vertex u: " + u.getName());
+            System.out.println("Polling Vertex u: " + u.getName() + " from the priority queue.");
             int indexOfCurrentVertex = vertices.indexOf(u);
-            System.out.println("indexOfCurrentVertex: " + indexOfCurrentVertex);
+            System.out.println(" indexOfCurrentVertex: " + indexOfCurrentVertex);
+            System.out.println(" Checking whether " + u.getName() + " has previously been visited...");
 
             if (!u.getVisited()) { //visited[indexOfCurrentVertex] != 1
                 ArrayList<Edge> outEdgesOfCurrentVertex = u.OutEdges; // vertices.get(indexOfCurrentVertex)
 
+                System.out.println(" " + u.getName() + " has not been visited yet.");
+
                 // Go through Outedge array of vertex
                 for (int v = 0; v < outEdgesOfCurrentVertex.size(); v++) {
-                    System.out.println("currentOutedges' weight of Vertex" + u.getName() + " : " + outEdgesOfCurrentVertex.get(v).getWeight());
+                    System.out.println(" currentOutedges' weight of Vertex " + u.getName() + " : " + outEdgesOfCurrentVertex.get(v).getWeight());
 
                     // was the vertex the outedge leads to not visited && is the outedge weight to that vertex smaller
                     // than the previous weight to that vertex?
@@ -74,34 +79,38 @@ public class AdjacencyGraph {
                         // Replace the old predecessor to the vertex by our current vertex
                         outEdgesOfCurrentVertex.get(v).getToVertex().setPredecessor(indexOfCurrentVertex);
 
-                        System.out.println("currentOutedges.get(v).getTo(): " + outEdgesOfCurrentVertex.get(v).getToVertex().getName());
+                        System.out.println(" currentOutedges.get(v).getTo(): " + outEdgesOfCurrentVertex.get(v).getToVertex().getName());
 
                         // Add the toVertex of the edge to our priority Queue.
                         Q.offer(outEdgesOfCurrentVertex.get(v).getToVertex());
+                        System.out.println(" Adding " + outEdgesOfCurrentVertex.get(v).getToVertex().getName() + " to the priority queue.");
                     }
                 }
                 // Update our Visited boolean of the current vertex to true.
                 vertices.get(indexOfCurrentVertex).setVisited(true);
 
+                // Update the number of vertices that have been visited.
                 counter++;
 
                 // Update the total distance of the MST.
                 MST += u.getDist();
+
+                System.out.println("\n");
             }
         }
-        System.out.println(" Minimum spanning Tree Distance: " + MST);
+        System.out.println("\nMinimum spanning Tree Distance: " + MST);
         printMST();
     }
 
     // Prints out the MST, displaying all vertices with their respective parents and edge weights.
     public void printMST(){
 
-        System.out.println(" Starting vertex: " + vertices.get(0).getName());
+        System.out.println("\nStarting vertex: " + vertices.get(0).getName());
 
 
         for (int i = 0; i < vertices.size(); i++){
             if (vertices.get(i).getPredecessor() != -1){
-                System.out.println(" Parent of vertex: " + vertices.get(i).getName() + " is: " + vertices.get(i).getPredecessor() + " with Edge Weight: " + vertices.get(i).getDist());
+                System.out.println(" Parent of vertex: " + vertices.get(i).getName() + " is: " + vertices.get(vertices.get(i).getPredecessor()).getName() + " with edge weight: " + vertices.get(i).getDist());
             }
         }
     }

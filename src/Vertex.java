@@ -4,7 +4,9 @@ public class Vertex implements Comparable<Vertex>{
     String name;
     ArrayList<Edge> OutEdges;
     Integer dist = Integer.MAX_VALUE;
-    Boolean visited = false;
+    boolean visited = false;
+    int predecessor;
+
 
     public Vertex(String id){
         this.name = id;

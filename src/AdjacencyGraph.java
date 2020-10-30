@@ -28,7 +28,7 @@ public class AdjacencyGraph {
             Vertex currentFrom = vertices.get(i);
             for (int j = 0; j < currentFrom.OutEdges.size(); j++){
                 Edge currentEdge = currentFrom.OutEdges.get(j);
-                System.out.println(" To: " + currentEdge.to.name + " (weight: " + currentEdge.weight + ")");
+                System.out.println(" To: " + currentEdge.toVertex.name + " (weight: " + currentEdge.weight + ")");
             }
             System.out.println("");
         }
@@ -36,10 +36,10 @@ public class AdjacencyGraph {
 
     public void MSTPrims(){
         int[] predecessor = new int[vertices.size()];
-        int[] visited = new int[vertices.size()];
+        //int[] visited = new int[vertices.size()];
         PriorityQueue<Vertex> Q = new PriorityQueue<>();
         Arrays.fill(predecessor, -1);
-        Arrays.fill(visited, 0);
+        // Arrays.fill(visited, 0);
         if (vertices.size() > 0){
             vertices.get(0).setDist(0);
             Q.offer(vertices.get(0));
@@ -52,20 +52,21 @@ public class AdjacencyGraph {
             int whateverName = vertices.indexOf(u);
             System.out.println("whateverName: " + whateverName);
 
-            if (visited[whateverName] != 1) {
-                ArrayList<Edge> currentOutedges = vertices.get(whateverName).OutEdges; // vertices.get(vertices.indexOf(u))
+            if (!u.getVisited()) { //visited[whateverName] != 1
+                ArrayList<Edge> outEdgesOfCurrentVertex = u.OutEdges; // vertices.get(vertices.indexOf(u))
 
-                for (int v = 0; v < currentOutedges.size(); v++) { // Go through Outedge array of vertex
-                    System.out.println("currentOutedges' weight of Vertex" + u.getName() + " : " + currentOutedges.get(v).getWeight());
+                for (int v = 0; v < outEdgesOfCurrentVertex.size(); v++) { // Go through Outedge array of vertex
+                    System.out.println("currentOutedges' weight of Vertex" + u.getName() + " : " + outEdgesOfCurrentVertex.get(v).getWeight());
 
-                    if (currentOutedges.get(v).getWeight() < currentOutedges.get(v).getTo().getDist() && !currentOutedges.get(v).getTo().getVisited()) {
+                    if (outEdgesOfCurrentVertex.get(v).getWeight() < outEdgesOfCurrentVertex.get(v).getToVertex().getDist()
+                            && !outEdgesOfCurrentVertex.get(v).getToVertex().getVisited()) {
                         // was the vertex the outedge leads to not visited && is the outedge weight to that vertex smaller
                         // than the previous weight to that vertex?
-                        currentOutedges.get(v).getTo().setDist(currentOutedges.get(v).getWeight());
-                        predecessor[vertices.indexOf(currentOutedges.get(v).getTo())] = whateverName;
+                        outEdgesOfCurrentVertex.get(v).getToVertex().setDist(outEdgesOfCurrentVertex.get(v).getWeight());
+                        predecessor[vertices.indexOf(outEdgesOfCurrentVertex.get(v).getToVertex())] = whateverName;
 
-                        System.out.println("currentOutedges.get(v).getTo(): " + currentOutedges.get(v).getTo().getName());
-                        Q.offer(currentOutedges.get(v).getTo());
+                        System.out.println("currentOutedges.get(v).getTo(): " + outEdgesOfCurrentVertex.get(v).getToVertex().getName());
+                        Q.offer(outEdgesOfCurrentVertex.get(v).getToVertex());
                     }
                 }
                 vertices.get(whateverName).setVisited(true);

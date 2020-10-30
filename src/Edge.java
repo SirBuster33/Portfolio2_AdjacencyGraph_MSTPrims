@@ -1,11 +1,11 @@
 public class Edge {
     Integer weight;
     Vertex from;
-    Vertex to;
+    Vertex toVertex;
 
-    public Edge(Vertex from, Vertex to, Integer cost){
+    public Edge(Vertex from, Vertex toVertex, Integer cost){
         this.from = from;
-        this.to = to;
+        this.toVertex = toVertex;
         this.weight = cost;
         this.from.addOutEdge(this);
     }
@@ -14,8 +14,8 @@ public class Edge {
         return weight;
     }
 
-    public Vertex getTo() {
-        return to;
+    public Vertex getToVertex() {
+        return toVertex;
     }
 
     //

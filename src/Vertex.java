@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Vertex implements Comparable<Vertex>{
     String name;
     ArrayList<Edge> OutEdges;
-    Integer dist = Integer.MAX_VALUE;
+    Integer distance = Integer.MAX_VALUE;
     boolean visited = false;
     int predecessor = -1;
 
@@ -18,7 +18,7 @@ public class Vertex implements Comparable<Vertex>{
         return name;
     }
     public Integer getDist() {
-        return dist;
+        return distance;
     }
     public Boolean getVisited() {
         return visited;
@@ -27,7 +27,7 @@ public class Vertex implements Comparable<Vertex>{
         return predecessor;
     }
     public void setDist(Integer dist) {
-        this.dist = dist;
+        this.distance = dist;
     }
     public void setVisited(Boolean visited) {
         this.visited = visited;
@@ -45,10 +45,10 @@ public class Vertex implements Comparable<Vertex>{
     // Redefines the compareTo method from the Comparable interface to suit this assignment's needs.
     @Override
     public int compareTo(Vertex o) {
-        if (this.dist < o.dist){
+        if (this.distance < o.distance){
             return -1;
         }
-        if (this.dist > o.dist){
+        if (this.distance > o.distance){
             return 1;
         }
         return 0;

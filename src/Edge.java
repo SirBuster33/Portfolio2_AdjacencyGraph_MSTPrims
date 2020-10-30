@@ -16,7 +16,7 @@ public class Edge {
     public Integer getWeight() {
         return weight;
     }
-   public Vertex getToVertex() {
+    public Vertex getToVertex() {
         return toVertex;
     }
 

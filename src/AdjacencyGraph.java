@@ -17,6 +17,7 @@ public class AdjacencyGraph {
     // Adds an edge between two vertices using a given weight.
     // Because we are working with a MST, the edge is created twice, once for each direction.
     public void addEdge(Vertex from, Vertex to, Integer weight){
+
         if (!(vertices.contains(from) && vertices.contains(to))){
             System.out.println("Error: At least one of the vertices given are not in the graph.");
             return;
@@ -99,20 +100,21 @@ public class AdjacencyGraph {
             }
         }
         System.out.println("\nMinimum spanning Tree Distance: " + MST);
-        printMST();
+        printMST(MST);
     }
 
     // Prints out the MST, displaying all vertices with their respective parents and edge weights.
-    public void printMST(){
+    public void printMST(int MST){
 
         System.out.println("\nStarting vertex: " + vertices.get(0).getName());
-
 
         for (int i = 0; i < vertices.size(); i++){
             if (vertices.get(i).getPredecessor() != -1){
                 System.out.println(" Parent of vertex: " + vertices.get(i).getName() + " is: " + vertices.get(vertices.get(i).getPredecessor()).getName() + " with edge weight: " + vertices.get(i).getDist());
             }
         }
+        System.out.println("\nThe length of the electricity grid is: " + MST + " km.");
+        System.out.println("This will cost: " + MST + " mio. danish kroner.");
     }
 }
 

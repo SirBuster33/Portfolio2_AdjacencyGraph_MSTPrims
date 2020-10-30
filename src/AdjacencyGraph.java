@@ -6,7 +6,7 @@ public class AdjacencyGraph {
 
     // Constructor for AdjacencyGraph instantiates a new arrayList of vertices.
     public AdjacencyGraph(){
-        vertices = new ArrayList<Vertex>();
+        vertices = new ArrayList<>();
     }
 
     // Allows us to add vertices to the graph.
@@ -22,8 +22,8 @@ public class AdjacencyGraph {
             System.out.println("Error: At least one of the vertices given are not in the graph.");
             return;
         }
-        Edge fromTo = new Edge(from, to, weight);
-        Edge toFrom = new Edge(to, from, weight);
+        new Edge(from, to, weight);
+        new Edge(to, from, weight);
     }
 
     // Prints out all the vertices from the graph with their respective outedges and the edges' weight.
@@ -43,10 +43,12 @@ public class AdjacencyGraph {
     // to connect all the vertices.
     public void MSTPrims(){
         PriorityQueue<Vertex> Q = new PriorityQueue<>();
-        if (vertices.size() > 0){
-            vertices.get(0).setDist(0);
-            Q.offer(vertices.get(0));
-        }
+
+        // Determine a starting Vertex and set the distance to it to 0.
+        vertices.get(0).setDist(0);
+        // Add that vertex to the priority queue.
+        Q.offer(vertices.get(0));
+
 
         // Creates a counter to keep track of how many vertices have been visited.
         int counter = 0;

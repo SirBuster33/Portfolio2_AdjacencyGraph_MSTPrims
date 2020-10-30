@@ -10,7 +10,7 @@ public class Vertex implements Comparable<Vertex>{
     // Constructor.
     public Vertex(String id){
         this.name = id;
-        this.OutEdges = new ArrayList<Edge>();
+        this.OutEdges = new ArrayList<>();
     }
 
     // Getters and Setters.

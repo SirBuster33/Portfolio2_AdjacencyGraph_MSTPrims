@@ -14,7 +14,6 @@ public class Main {
         // Find MST using Prims algorithm and prints the result.
         grid.MSTPrims();
 
-
     }
 
     // Add the data provided in the Assignment to an AdjacencyGraph.

@@ -62,19 +62,19 @@ public class AdjacencyGraph {
             System.out.println(" indexOfCurrentVertex: " + indexOfCurrentVertex);
             System.out.println(" Checking whether " + u.getName() + " has previously been visited...");
 
-            if (!u.getVisited()) { //visited[indexOfCurrentVertex] != 1
-                ArrayList<Edge> outEdgesOfCurrentVertex = u.OutEdges; // vertices.get(indexOfCurrentVertex)
+            if (!u.getVisited()) {
+                ArrayList<Edge> outEdgesOfCurrentVertex = u.OutEdges;
 
                 System.out.println(" " + u.getName() + " has not been visited yet.");
 
                 // Go through Outedge array of vertex
-                for (int v = 0; v < outEdgesOfCurrentVertex.size(); v++) {
+                for (int v = 0; v < outEdgesOfCurrentVertex.size(); v++){
                     System.out.println(" currentOutedges' weight of Vertex " + u.getName() + " : " + outEdgesOfCurrentVertex.get(v).getWeight());
 
                     // was the vertex the outedge leads to not visited && is the outedge weight to that vertex smaller
                     // than the previous weight to that vertex?
                     if (outEdgesOfCurrentVertex.get(v).getWeight() < outEdgesOfCurrentVertex.get(v).getToVertex().getDist()
-                            && !outEdgesOfCurrentVertex.get(v).getToVertex().getVisited()) {
+                            && !outEdgesOfCurrentVertex.get(v).getToVertex().getVisited()){
 
                         // Update the distance to the vertex using the smaller weight from our current vertex.
                         outEdgesOfCurrentVertex.get(v).getToVertex().setDist(outEdgesOfCurrentVertex.get(v).getWeight());

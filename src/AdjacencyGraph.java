@@ -62,12 +62,13 @@ public class AdjacencyGraph {
             System.out.println(" indexOfCurrentVertex: " + indexOfCurrentVertex);
             System.out.println(" Checking whether " + u.getName() + " has previously been visited...");
 
+            // If the current vertex has not been visited yet...
             if (!u.getVisited()) {
                 ArrayList<Edge> outEdgesOfCurrentVertex = u.OutEdges;
 
                 System.out.println(" " + u.getName() + " has not been visited yet.");
 
-                // Go through Outedge array of vertex
+                // Go through Outedge array of the current vertex
                 for (int v = 0; v < outEdgesOfCurrentVertex.size(); v++){
                     System.out.println(" currentOutedges' weight of Vertex " + u.getName() + " : " + outEdgesOfCurrentVertex.get(v).getWeight());
 
